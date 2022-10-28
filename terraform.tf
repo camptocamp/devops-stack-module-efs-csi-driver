@@ -1,11 +1,11 @@
 terraform {
-	required_providers {
-		argocd = {
+  required_providers {
+    argocd = {
       source = "oboukili/argocd"
     }
 
-		utils = {
+    utils = {
       source = "cloudposse/utils"
     }
-	}
+  }
 }
