@@ -10,12 +10,11 @@ variable "source_repository_url" {
 	default = "https://github.com/camptocamp/devops-stack-module-efs-csi-driver.git"
 }
 
-variable "source_target_revision" {
-	type = string
-
-	default = "main"
+variable "target_revision" {
+  description = "Override of target revision of the application chart."
+  type        = string
+  default     = "v1.0.0" # x-release-please-version
 }
-
 variable "destination_namespace" {
 	type = string
 

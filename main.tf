@@ -46,7 +46,7 @@ resource "argocd_application" "this" {
     source {
       repo_url        = var.source_repository_url
       path            = "helm"
-      target_revision = var.source_target_revision
+      target_revision = var.target_revision
       helm {
         values = data.utils_deep_merge_yaml.values.output
       }
