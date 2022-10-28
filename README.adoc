@@ -1,0 +1,160 @@
+// BEGIN_TF_DOCS
+=== Requirements
+
+No requirements.
+
+=== Providers
+
+The following providers are used by this module:
+
+- [[provider_argocd]] <<provider_argocd,argocd>>
+
+- [[provider_utils]] <<provider_utils,utils>>
+
+=== Modules
+
+No modules.
+
+=== Resources
+
+The following resources are used by this module:
+
+- https://registry.terraform.io/providers/oboukili/argocd/latest/docs/resources/application[argocd_application.this] (resource)
+- https://registry.terraform.io/providers/oboukili/argocd/latest/docs/resources/project[argocd_project.this] (resource)
+- https://registry.terraform.io/providers/cloudposse/utils/latest/docs/data-sources/deep_merge_yaml[utils_deep_merge_yaml.values] (data source)
+
+=== Required Inputs
+
+The following input variables are required:
+
+==== [[input_argocd_namespace]] <<input_argocd_namespace,argocd_namespace>>
+
+Description: n/a
+
+Type: `string`
+
+==== [[input_efs_file_system_id]] <<input_efs_file_system_id,efs_file_system_id>>
+
+Description: n/a
+
+Type: `string`
+
+=== Optional Inputs
+
+The following input variables are optional (have default values):
+
+==== [[input_destination_namespace]] <<input_destination_namespace,destination_namespace>>
+
+Description: n/a
+
+Type: `string`
+
+Default: `"efs-csi-driver"`
+
+==== [[input_helm_values_overrides]] <<input_helm_values_overrides,helm_values_overrides>>
+
+Description: n/a
+
+Type: `any`
+
+Default: `{}`
+
+==== [[input_name]] <<input_name,name>>
+
+Description: n/a
+
+Type: `string`
+
+Default: `"efs-csi-driver"`
+
+==== [[input_source_repository_url]] <<input_source_repository_url,source_repository_url>>
+
+Description: n/a
+
+Type: `string`
+
+Default: `"https://github.com/camptocamp/devops-stack-module-efs-csi-driver.git"`
+
+==== [[input_target_revision]] <<input_target_revision,target_revision>>
+
+Description: Override of target revision of the application chart.
+
+Type: `string`
+
+Default: `"v1.0.0"`
+
+=== Outputs
+
+No outputs.
+// END_TF_DOCS
+// BEGIN_TF_TABLES
+
+
+= Providers
+
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Version
+|[[provider_argocd]] <<provider_argocd,argocd>> |n/a
+|[[provider_utils]] <<provider_utils,utils>> |n/a
+|===
+
+= Resources
+
+[cols="a,a",options="header,autowidth"]
+|===
+|Name |Type
+|https://registry.terraform.io/providers/oboukili/argocd/latest/docs/resources/application[argocd_application.this] |resource
+|https://registry.terraform.io/providers/oboukili/argocd/latest/docs/resources/project[argocd_project.this] |resource
+|https://registry.terraform.io/providers/cloudposse/utils/latest/docs/data-sources/deep_merge_yaml[utils_deep_merge_yaml.values] |data source
+|===
+
+= Inputs
+
+[cols="a,a,a,a,a",options="header,autowidth"]
+|===
+|Name |Description |Type |Default |Required
+|[[input_argocd_namespace]] <<input_argocd_namespace,argocd_namespace>>
+|n/a
+|`string`
+|n/a
+|yes
+
+|[[input_destination_namespace]] <<input_destination_namespace,destination_namespace>>
+|n/a
+|`string`
+|`"efs-csi-driver"`
+|no
+
+|[[input_efs_file_system_id]] <<input_efs_file_system_id,efs_file_system_id>>
+|n/a
+|`string`
+|n/a
+|yes
+
+|[[input_helm_values_overrides]] <<input_helm_values_overrides,helm_values_overrides>>
+|n/a
+|`any`
+|`{}`
+|no
+
+|[[input_name]] <<input_name,name>>
+|n/a
+|`string`
+|`"efs-csi-driver"`
+|no
+
+|[[input_source_repository_url]] <<input_source_repository_url,source_repository_url>>
+|n/a
+|`string`
+|`"https://github.com/camptocamp/devops-stack-module-efs-csi-driver.git"`
+|no
+
+|[[input_target_revision]] <<input_target_revision,target_revision>>
+|Override of target revision of the application chart.
+|`string`
+|`"v1.0.0"`
+|no
+
+|===
+// END_TF_TABLES
