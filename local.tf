@@ -6,8 +6,8 @@ locals {
         name = "efs"
         parameters = {
           provisioningMode = "efs-ap"
-          fileSystemId = var.efs_file_system_id
-          directoryPerms = "700"
+          fileSystemId     = var.efs_file_system_id
+          directoryPerms   = "700"
         }
       }]
     }

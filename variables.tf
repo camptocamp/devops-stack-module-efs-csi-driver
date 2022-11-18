@@ -1,35 +1,34 @@
 variable "name" {
-	type = string
+  type = string
 
-	default = "efs-csi-driver"
+  default = "efs-csi-driver"
 }
 
 variable "source_repository_url" {
-	type = string
+  type = string
 
-	default = "https://github.com/camptocamp/devops-stack-module-efs-csi-driver.git"
+  default = "https://github.com/camptocamp/devops-stack-module-efs-csi-driver.git"
 }
 
-variable "source_target_revision" {
-	type = string
-
-	default = "main"
+variable "target_revision" {
+  description = "Override of target revision of the application chart."
+  type        = string
+  default     = "v1.0.0" # x-release-please-version
 }
-
 variable "destination_namespace" {
-	type = string
+  type = string
 
-	default = "efs-csi-driver"
+  default = "efs-csi-driver"
 }
 
 variable "helm_values_overrides" {
-	type = any
+  type = any
 
-	default = {}
+  default = {}
 }
 
 variable "argocd_namespace" {
-	type = string
+  type = string
 }
 
 variable "efs_file_system_id" {
