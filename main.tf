@@ -55,7 +55,7 @@ resource "argocd_application" "this" {
 
     destination {
       name      = "in-cluster"
-      namespace = var.destination_namespace
+      namespace = var.namespace
     }
 
     sync_policy {
