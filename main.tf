@@ -1,3 +1,7 @@
+resource "null_resource" "dependencies" {
+  triggers = var.dependency_ids
+}
+
 resource "argocd_project" "this" {
   metadata {
     name      = "efs-csi-driver"
@@ -13,7 +17,7 @@ resource "argocd_project" "this" {
 
     destination {
       name      = "in-cluster"
-      namespace = var.destination_namespace
+      namespace = var.namespace
     }
 
     orphaned_resources {
@@ -28,10 +32,7 @@ resource "argocd_project" "this" {
 }
 
 data "utils_deep_merge_yaml" "values" {
-  input = [
-    yamlencode(local.helm_values),
-    yamlencode(var.helm_values_overrides)
-  ]
+  input = [for i in concat(local.helm_values, var.helm_values) : yamlencode(i)]
 }
 
 resource "argocd_application" "this" {
@@ -44,8 +45,8 @@ resource "argocd_application" "this" {
     project = argocd_project.this.metadata.0.name
 
     source {
-      repo_url        = var.source_repository_url
-      path            = "helm"
+      repo_url        = "https://github.com/camptocamp/devops-stack-module-efs-csi-driver.git"
+      path            = "charts/efs-csi-driver"
       target_revision = var.target_revision
       helm {
         values = data.utils_deep_merge_yaml.values.output
@@ -58,14 +59,21 @@ resource "argocd_application" "this" {
     }
 
     sync_policy {
-      automated = {
-        prune     = true
-        self_heal = true
-      }
+      automated = var.app_autosync
 
       sync_options = [
         "CreateNamespace=true"
       ]
     }
   }
+
+  depends_on = [
+    resource.null_resource.dependencies,
+  ]
+}
+
+resource "null_resource" "this" {
+  depends_on = [
+    resource.argocd_application.this,
+  ]
 }
