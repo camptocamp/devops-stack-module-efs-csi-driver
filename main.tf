@@ -41,6 +41,13 @@ resource "argocd_application" "this" {
     namespace = var.argocd_namespace
   }
 
+  timeouts {
+    create = "15m"
+    delete = "15m"
+  }
+
+  wait = var.app_autosync == { "allow_empty" = null, "prune" = null, "self_heal" = null } ? false : true
+
   spec {
     project = argocd_project.this.metadata.0.name
 
@@ -60,6 +67,14 @@ resource "argocd_application" "this" {
 
     sync_policy {
       automated = var.app_autosync
+
+      retry {
+        backoff = {
+          duration     = ""
+          max_duration = ""
+        }
+        limit = "0"
+      }
 
       sync_options = [
         "CreateNamespace=true"
