@@ -16,7 +16,7 @@ variable "target_revision" {
 variable "namespace" {
   description = "Namespace where the applications's Kubernetes resources should be created. Namespace will be created in case it doesn't exist."
   type        = string
-  default = "efs-csi-driver"
+  default     = "efs-csi-driver"
 }
 
 variable "helm_values" {
@@ -51,11 +51,11 @@ variable "dependency_ids" {
 
 variable "name" {
   description = "TODO"
-  type = string
-  default = "efs-csi-driver"
+  type        = string
+  default     = "efs-csi-driver"
 }
 
 variable "efs_file_system_id" {
   description = "TODO"
-  type = string
+  type        = string
 }
