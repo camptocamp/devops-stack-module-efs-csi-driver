@@ -35,7 +35,7 @@ Type: `string`
 
 ==== [[input_efs_file_system_id]] <<input_efs_file_system_id,efs_file_system_id>>
 
-Description: n/a
+Description: EFS Filesystem ID to use by the CSI driver to create volumes
 
 Type: `string`
 
@@ -59,6 +59,14 @@ Type: `any`
 
 Default: `{}`
 
+==== [[input_iam_role_arn]] <<input_iam_role_arn,iam_role_arn>>
+
+Description: ARN of an OIDC assumable IAM role that has access to the EFS filesystem (optional). When specified, this is added as an annotation to the EFS CSI driver controller ServiceAccount, to allow the driver to manage EFS access points for dynamic volumes provisioning.
+
+Type: `string`
+
+Default: `""`
+
 ==== [[input_name]] <<input_name,name>>
 
 Description: n/a
@@ -81,7 +89,7 @@ Description: Override of target revision of the application chart.
 
 Type: `string`
 
-Default: `"v1.0.0"`
+Default: `"v1.0.0-alpha.1"`
 
 === Outputs
 
@@ -127,7 +135,7 @@ No outputs.
 |no
 
 |[[input_efs_file_system_id]] <<input_efs_file_system_id,efs_file_system_id>>
-|n/a
+|EFS Filesystem ID to use by the CSI driver to create volumes
 |`string`
 |n/a
 |yes
@@ -136,6 +144,12 @@ No outputs.
 |n/a
 |`any`
 |`{}`
+|no
+
+|[[input_iam_role_arn]] <<input_iam_role_arn,iam_role_arn>>
+|ARN of an OIDC assumable IAM role that has access to the EFS filesystem (optional). When specified, this is added as an annotation to the EFS CSI driver controller ServiceAccount, to allow the driver to manage EFS access points for dynamic volumes provisioning.
+|`string`
+|`""`
 |no
 
 |[[input_name]] <<input_name,name>>
@@ -153,7 +167,7 @@ No outputs.
 |[[input_target_revision]] <<input_target_revision,target_revision>>
 |Override of target revision of the application chart.
 |`string`
-|`"v1.0.0"`
+|`"v1.0.0-alpha.1"`
 |no
 
 |===
