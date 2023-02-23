@@ -9,13 +9,21 @@ The following providers are used by this module:
 
 - [[provider_argocd]] <<provider_argocd,argocd>>
 
+- [[provider_aws]] <<provider_aws,aws>>
+
 - [[provider_null]] <<provider_null,null>>
 
 - [[provider_utils]] <<provider_utils,utils>>
 
 === Modules
 
-No modules.
+The following Modules are called:
+
+==== [[module_iam_assumable_role_efs]] <<module_iam_assumable_role_efs,iam_assumable_role_efs>>
+
+Source: terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc
+
+Version: ~> 5.0
 
 === Resources
 
@@ -23,6 +31,7 @@ The following resources are used by this module:
 
 - https://registry.terraform.io/providers/oboukili/argocd/latest/docs/resources/application[argocd_application.this] (resource)
 - https://registry.terraform.io/providers/oboukili/argocd/latest/docs/resources/project[argocd_project.this] (resource)
+- https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy[aws_iam_policy.efs] (resource)
 - https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.dependencies] (resource)
 - https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.this] (resource)
 - https://registry.terraform.io/providers/cloudposse/utils/latest/docs/data-sources/deep_merge_yaml[utils_deep_merge_yaml.values] (data source)
@@ -39,7 +48,7 @@ Type: `string`
 
 ==== [[input_efs_file_system_id]] <<input_efs_file_system_id,efs_file_system_id>>
 
-Description: TODO
+Description: EFS Filesystem ID to use by the CSI driver to create volumes.
 
 Type: `string`
 
@@ -71,6 +80,22 @@ Default:
 }
 ----
 
+==== [[input_cluster_name]] <<input_cluster_name,cluster_name>>
+
+Description: Name given to the cluster. Value used for naming some the resources created by the module.
+
+Type: `string`
+
+Default: `"cluster"`
+
+==== [[input_cluster_oidc_issuer_url]] <<input_cluster_oidc_issuer_url,cluster_oidc_issuer_url>>
+
+Description: Cluster OIDC issuer URL used to create the OIDC assumable IAM role. **This variable is required to create a IAM role if you do not provide the variable `iam_role_arn`.**
+
+Type: `string`
+
+Default: `null`
+
 ==== [[input_dependency_ids]] <<input_dependency_ids,dependency_ids>>
 
 Description: IDs of the other modules on which this module depends on.
@@ -87,9 +112,17 @@ Type: `any`
 
 Default: `[]`
 
+==== [[input_iam_role_arn]] <<input_iam_role_arn,iam_role_arn>>
+
+Description: ARN of an OIDC assumable IAM role that has access to the EFS filesystem. When specified, this is added as an annotation to the EFS CSI driver controller ServiceAccount, to allow the driver to manage EFS access points for dynamic volumes provisioning. **If not specified, you need to specify the variable `cluster_oidc_issuer_url`.**
+
+Type: `any`
+
+Default: `null`
+
 ==== [[input_name]] <<input_name,name>>
 
-Description: TODO
+Description: Name used to override the chart name on deployment.
 
 Type: `string`
 
@@ -109,7 +142,7 @@ Description: Override of target revision of the application chart.
 
 Type: `string`
 
-Default: `"v1.0.0-alpha.1"`
+Default: `"v1.0.0-alpha.2"`
 
 === Outputs
 
@@ -128,8 +161,17 @@ Description: ID to pass other modules in order to refer to this module as a depe
 |===
 |Name |Version
 |[[provider_argocd]] <<provider_argocd,argocd>> |n/a
+|[[provider_aws]] <<provider_aws,aws>> |n/a
 |[[provider_null]] <<provider_null,null>> |n/a
 |[[provider_utils]] <<provider_utils,utils>> |n/a
+|===
+
+= Modules
+
+[cols="a,a,a",options="header,autowidth"]
+|===
+|Name |Source |Version
+|[[module_iam_assumable_role_efs]] <<module_iam_assumable_role_efs,iam_assumable_role_efs>> |terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc |~> 5.0
 |===
 
 = Resources
@@ -139,6 +181,7 @@ Description: ID to pass other modules in order to refer to this module as a depe
 |Name |Type
 |https://registry.terraform.io/providers/oboukili/argocd/latest/docs/resources/application[argocd_application.this] |resource
 |https://registry.terraform.io/providers/oboukili/argocd/latest/docs/resources/project[argocd_project.this] |resource
+|https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy[aws_iam_policy.efs] |resource
 |https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.dependencies] |resource
 |https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource[null_resource.this] |resource
 |https://registry.terraform.io/providers/cloudposse/utils/latest/docs/data-sources/deep_merge_yaml[utils_deep_merge_yaml.values] |data source
@@ -181,6 +224,18 @@ object({
 |n/a
 |yes
 
+|[[input_cluster_name]] <<input_cluster_name,cluster_name>>
+|Name given to the cluster. Value used for naming some the resources created by the module.
+|`string`
+|`"cluster"`
+|no
+
+|[[input_cluster_oidc_issuer_url]] <<input_cluster_oidc_issuer_url,cluster_oidc_issuer_url>>
+|Cluster OIDC issuer URL used to create the OIDC assumable IAM role. **This variable is required to create a IAM role if you do not provide the variable `iam_role_arn`.**
+|`string`
+|`null`
+|no
+
 |[[input_dependency_ids]] <<input_dependency_ids,dependency_ids>>
 |IDs of the other modules on which this module depends on.
 |`map(string)`
@@ -188,7 +243,7 @@ object({
 |no
 
 |[[input_efs_file_system_id]] <<input_efs_file_system_id,efs_file_system_id>>
-|TODO
+|EFS Filesystem ID to use by the CSI driver to create volumes.
 |`string`
 |n/a
 |yes
@@ -199,8 +254,14 @@ object({
 |`[]`
 |no
 
+|[[input_iam_role_arn]] <<input_iam_role_arn,iam_role_arn>>
+|ARN of an OIDC assumable IAM role that has access to the EFS filesystem. When specified, this is added as an annotation to the EFS CSI driver controller ServiceAccount, to allow the driver to manage EFS access points for dynamic volumes provisioning. **If not specified, you need to specify the variable `cluster_oidc_issuer_url`.**
+|`string`
+|`null`
+|no
+
 |[[input_name]] <<input_name,name>>
-|TODO
+|Name used to override the chart name on deployment.
 |`string`
 |`"efs-csi-driver"`
 |no
@@ -214,7 +275,7 @@ object({
 |[[input_target_revision]] <<input_target_revision,target_revision>>
 |Override of target revision of the application chart.
 |`string`
-|`"v1.0.0-alpha.1"`
+|`"v1.0.0-alpha.2"`
 |no
 
 |===

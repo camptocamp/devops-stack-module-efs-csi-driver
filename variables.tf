@@ -56,6 +56,12 @@ variable "name" {
 }
 
 variable "efs_file_system_id" {
-  description = "TODO"
   type        = string
+  description = "EFS Filesystem ID to use by the CSI driver to create volumes"
+}
+
+variable "iam_role_arn" {
+  type        = string
+  default     = ""
+  description = "ARN of an OIDC assumable IAM role that has access to the EFS filesystem (optional). When specified, this is added as an annotation to the EFS CSI driver controller ServiceAccount, to allow the driver to manage EFS access points for dynamic volumes provisioning."
 }

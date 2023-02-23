@@ -10,6 +10,11 @@ locals {
           directoryPerms   = "700"
         }
       }]
+      controller = {
+        serviceAccount = {
+          annotations = var.iam_role_arn != "" ? { "eks.amazonaws.com/role-arn" = var.iam_role_arn } : {}
+        }
+      }
     }
   }]
 }
