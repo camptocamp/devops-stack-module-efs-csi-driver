@@ -128,14 +128,6 @@ Type: `string`
 
 Default: `"efs-csi-driver"`
 
-==== [[input_namespace]] <<input_namespace,namespace>>
-
-Description: Namespace where the applications's Kubernetes resources should be created. Namespace will be created in case it doesn't exist.
-
-Type: `string`
-
-Default: `"efs-csi-driver"`
-
 ==== [[input_target_revision]] <<input_target_revision,target_revision>>
 
 Description: Override of target revision of the application chart.
@@ -262,12 +254,6 @@ object({
 
 |[[input_name]] <<input_name,name>>
 |Name used to override the chart name on deployment.
-|`string`
-|`"efs-csi-driver"`
-|no
-
-|[[input_namespace]] <<input_namespace,namespace>>
-|Namespace where the applications's Kubernetes resources should be created. Namespace will be created in case it doesn't exist.
 |`string`
 |`"efs-csi-driver"`
 |no
