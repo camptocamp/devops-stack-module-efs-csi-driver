@@ -36,7 +36,7 @@ data "utils_deep_merge_yaml" "values" {
 }
 
 resource "aws_iam_policy" "efs" {
-  name_prefix = "efs-csi-driver"
+  name_prefix = "efs-csi-driver-"
 
   policy = jsonencode({
     Version = "2012-10-17"
