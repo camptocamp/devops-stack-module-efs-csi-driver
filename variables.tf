@@ -61,7 +61,7 @@ variable "efs_file_system_id" {
 }
 
 variable "create_role" {
-  description = "Boolean to indicate that the OIDC assumable IAM role should be created. If passing `iam_role_arn` this should be false, otherwise if you want to create the OIDC assumable IAM role provided by this module, you will need to specify the variable `cluster_oidc_issuer_url`."
+  description = "Boolean to indicate that the OIDC assumable IAM role should be created. **If passing `iam_role_arn` this should be false, otherwise if you want to create the OIDC assumable IAM role provided by this module, you will need to specify the variable `cluster_oidc_issuer_url`.**"
   type        = bool
 }
 
@@ -72,7 +72,7 @@ variable "iam_role_arn" {
 }
 
 variable "cluster_oidc_issuer_url" {
-  description = "Cluster OIDC issuer URL used to create the OIDC assumable IAM role. **This variable is required to create a IAM role if you set `create_role` as true.**"
+  description = "Cluster OIDC issuer URL used to create the OIDC assumable IAM role. This variable is required to create a IAM role if you set `create_role` as true."
   type        = string
   default     = "" # Use empty string instead of null because of the replace() that uses this variable.
 }
