@@ -69,5 +69,5 @@ variable "iam_role_arn" {
 variable "cluster_oidc_issuer_url" {
   description = "Cluster OIDC issuer URL used to create the OIDC assumable IAM role. **This variable is required to create a IAM role if you do not provide the variable `iam_role_arn`.**"
   type        = string
-  default     = null
+  default     = "" # Use empty string instead of null because of the replace() that uses this variable.
 }
