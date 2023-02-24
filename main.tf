@@ -17,7 +17,7 @@ resource "argocd_project" "this" {
 
     destination {
       name      = "in-cluster"
-      namespace = var.namespace
+      namespace = "kube-system"
     }
 
     orphaned_resources {
@@ -88,7 +88,7 @@ module "iam_assumable_role_efs" {
 
   # List of ServiceAccounts that have permission to attach to this IAM role
   oidc_fully_qualified_subjects = [
-    "system:serviceaccount:${var.namespace}:efs-csi-controller-sa",
+    "system:serviceaccount:kube-system:efs-csi-controller-sa",
   ]
 }
 
@@ -119,7 +119,7 @@ resource "argocd_application" "this" {
 
     destination {
       name      = "in-cluster"
-      namespace = var.namespace
+      namespace = "kube-system"
     }
 
     sync_policy {
