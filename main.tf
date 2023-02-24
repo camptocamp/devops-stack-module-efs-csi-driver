@@ -36,8 +36,6 @@ data "utils_deep_merge_yaml" "values" {
 }
 
 resource "aws_iam_policy" "efs" {
-  count = var.iam_role_arn != null ? 1 : 0
-
   name_prefix = "efs-csi-driver"
 
   policy = jsonencode({
@@ -82,11 +80,11 @@ resource "aws_iam_policy" "efs" {
 module "iam_assumable_role_efs" {
   source                     = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
   version                    = "~> 5.0" # TODO Upgrade and test with newer version
-  create_role                = var.iam_role_arn != null ? true : false
+  create_role                = var.iam_role_arn == null ? true : false
   number_of_role_policy_arns = 1
   role_name                  = format("efs-csi-driver-%s", var.cluster_name)
   provider_url               = replace(var.cluster_oidc_issuer_url, "https://", "")
-  role_policy_arns           = [resource.aws_iam_policy.efs[*].arn]
+  role_policy_arns           = [resource.aws_iam_policy.efs.arn]
 
   # List of ServiceAccounts that have permission to attach to this IAM role
   oidc_fully_qualified_subjects = [
