@@ -158,7 +158,7 @@ Type: `string`
 
 ==== [[input_create_role]] <<input_create_role,create_role>>
 
-Description: Boolean to indicate that the OIDC assumable IAM role should be created. If passing `iam_role_arn` this should be false, otherwise if you want to create the OIDC assumable IAM role provided by this module, you will need to specify the variable `cluster_oidc_issuer_url`.
+Description: Boolean to indicate that the OIDC assumable IAM role should be created. **If passing `iam_role_arn` this should be false, otherwise if you want to create the OIDC assumable IAM role provided by this module, you will need to specify the variable `cluster_oidc_issuer_url`.**
 
 Type: `bool`
 
@@ -206,7 +206,7 @@ Default: `"cluster"`
 
 ==== [[input_cluster_oidc_issuer_url]] <<input_cluster_oidc_issuer_url,cluster_oidc_issuer_url>>
 
-Description: Cluster OIDC issuer URL used to create the OIDC assumable IAM role. **This variable is required to create a IAM role if you set `create_role` as true.**
+Description: Cluster OIDC issuer URL used to create the OIDC assumable IAM role. This variable is required to create a IAM role if you set `create_role` as true.
 
 Type: `string`
 
@@ -352,13 +352,13 @@ object({
 |no
 
 |[[input_cluster_oidc_issuer_url]] <<input_cluster_oidc_issuer_url,cluster_oidc_issuer_url>>
-|Cluster OIDC issuer URL used to create the OIDC assumable IAM role. **This variable is required to create a IAM role if you set `create_role` as true.**
+|Cluster OIDC issuer URL used to create the OIDC assumable IAM role. This variable is required to create a IAM role if you set `create_role` as true.
 |`string`
 |`""`
 |no
 
 |[[input_create_role]] <<input_create_role,create_role>>
-|Boolean to indicate that the OIDC assumable IAM role should be created. If passing `iam_role_arn` this should be false, otherwise if you want to create the OIDC assumable IAM role provided by this module, you will need to specify the variable `cluster_oidc_issuer_url`.
+|Boolean to indicate that the OIDC assumable IAM role should be created. **If passing `iam_role_arn` this should be false, otherwise if you want to create the OIDC assumable IAM role provided by this module, you will need to specify the variable `cluster_oidc_issuer_url`.**
 |`bool`
 |n/a
 |yes
