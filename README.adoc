@@ -50,7 +50,7 @@ Type: `string`
 
 Description: Boolean to indicate that the OIDC assumable IAM role should be created. If passing `iam_role_arn` this should be false, otherwise if you want to create the OIDC assumable IAM role provided by this module, you will need to specify the variable `cluster_oidc_issuer_url`.
 
-Type: `boolean`
+Type: `bool`
 
 ==== [[input_efs_file_system_id]] <<input_efs_file_system_id,efs_file_system_id>>
 
@@ -236,7 +236,7 @@ object({
 
 |[[input_create_role]] <<input_create_role,create_role>>
 |Boolean to indicate that the OIDC assumable IAM role should be created. If passing `iam_role_arn` this should be false, otherwise if you want to create the OIDC assumable IAM role provided by this module, you will need to specify the variable `cluster_oidc_issuer_url`.
-|`boolean`
+|`bool`
 |n/a
 |yes
 
