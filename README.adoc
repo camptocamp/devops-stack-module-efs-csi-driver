@@ -243,7 +243,7 @@ object({
 |no
 
 |[[input_efs_file_system_id]] <<input_efs_file_system_id,efs_file_system_id>>
-|EFS Filesystem ID to use by the CSI driver to create volumes
+|EFS Filesystem ID to use by the CSI driver to create volumes.
 |`string`
 |n/a
 |yes
@@ -255,9 +255,9 @@ object({
 |no
 
 |[[input_iam_role_arn]] <<input_iam_role_arn,iam_role_arn>>
-|ARN of an OIDC assumable IAM role that has access to the EFS filesystem (optional). When specified, this is added as an annotation to the EFS CSI driver controller ServiceAccount, to allow the driver to manage EFS access points for dynamic volumes provisioning.
+|ARN of an OIDC assumable IAM role that has access to the EFS filesystem. When specified, this is added as an annotation to the EFS CSI driver controller ServiceAccount, to allow the driver to manage EFS access points for dynamic volumes provisioning. **If not specified, you need to specify the variable `cluster_oidc_issuer_url`.**
 |`string`
-|`""`
+|`null`
 |no
 
 |[[input_name]] <<input_name,name>>
