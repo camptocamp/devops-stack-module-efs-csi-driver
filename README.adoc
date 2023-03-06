@@ -109,21 +109,21 @@ This module must be one of the first ones to be deployed and consequently it nee
 
 The following requirements are needed by this module:
 
-- [[requirement_argocd]] <<requirement_argocd,argocd>> (~> 4)
+- [[requirement_argocd]] <<requirement_argocd,argocd>> (>= 4)
 
-- [[requirement_utils]] <<requirement_utils,utils>> (~> 1)
+- [[requirement_utils]] <<requirement_utils,utils>> (>= 1)
 
 === Providers
 
 The following providers are used by this module:
 
-- [[provider_argocd]] <<provider_argocd,argocd>> (~> 4)
+- [[provider_argocd]] <<provider_argocd,argocd>> (>= 4)
 
 - [[provider_aws]] <<provider_aws,aws>>
 
 - [[provider_null]] <<provider_null,null>>
 
-- [[provider_utils]] <<provider_utils,utils>> (~> 1)
+- [[provider_utils]] <<provider_utils,utils>> (>= 1)
 
 === Modules
 
@@ -272,8 +272,8 @@ Description: ID to pass other modules in order to refer to this module as a depe
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Version
-|[[requirement_argocd]] <<requirement_argocd,argocd>> |~> 4
-|[[requirement_utils]] <<requirement_utils,utils>> |~> 1
+|[[requirement_argocd]] <<requirement_argocd,argocd>> |>= 4
+|[[requirement_utils]] <<requirement_utils,utils>> |>= 1
 |===
 
 = Providers
@@ -281,10 +281,10 @@ Description: ID to pass other modules in order to refer to this module as a depe
 [cols="a,a",options="header,autowidth"]
 |===
 |Name |Version
-|[[provider_argocd]] <<provider_argocd,argocd>> |~> 4
+|[[provider_argocd]] <<provider_argocd,argocd>> |>= 4
 |[[provider_aws]] <<provider_aws,aws>> |n/a
 |[[provider_null]] <<provider_null,null>> |n/a
-|[[provider_utils]] <<provider_utils,utils>> |~> 1
+|[[provider_utils]] <<provider_utils,utils>> |>= 1
 |===
 
 = Modules
