@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.0-alpha.3](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2023-03-08)
+## [1.0.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v1.0.0-alpha.2...v1.0.0) (2023-03-08)
 
 
 ### Features
