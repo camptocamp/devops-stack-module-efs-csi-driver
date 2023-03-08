@@ -1,5 +1,5 @@
 locals {
-  helm_values = {
+  helm_values = [{
     "aws-efs-csi-driver" = {
       nameOverride = var.name
       storageClasses = [{
@@ -12,9 +12,11 @@ locals {
       }]
       controller = {
         serviceAccount = {
-          annotations = var.iam_role_arn != "" ? { "eks.amazonaws.com/role-arn" = var.iam_role_arn } : {}
+          annotations = {
+            "eks.amazonaws.com/role-arn" = var.iam_role_arn != null ? var.iam_role_arn : module.iam_assumable_role_efs.iam_role_arn
+          }
         }
       }
     }
-  }
+  }]
 }
