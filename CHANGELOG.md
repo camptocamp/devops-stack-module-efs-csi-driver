@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v1.0.0...v1.0.1) (2023-03-17)
+
+
+### Documentation
+
+* add Antora Docs folder structure ([#8](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/issues/8)) ([aba054f](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/commit/aba054f1533507fff9ec614b2cdf789801fcf2a1))
+
 ## [1.0.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v1.0.0-alpha.2...v1.0.0) (2023-03-08)
 
 
