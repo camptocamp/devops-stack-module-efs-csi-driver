@@ -12,7 +12,7 @@ resource "argocd_project" "this" {
   }
 
   spec {
-    description  = "efs-csi-driver application project"
+    description  = "EFS CSI driver application project"
     source_repos = ["https://github.com/camptocamp/devops-stack-module-efs-csi-driver.git"]
 
     destination {
