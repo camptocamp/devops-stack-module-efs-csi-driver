@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v1.0.1...v1.0.2) (2023-05-30)
+
+
+### Bug Fixes
+
+* add missing provider ([ead06ca](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/commit/ead06cae9e0fc4b1617a85fdca2789c5c69d910d))
+
 ## [1.0.1](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v1.0.0...v1.0.1) (2023-03-17)
 
 
