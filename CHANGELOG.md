@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v1.0.2...v2.0.0) (2023-07-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* add support to oboukili/argocd >= v5 ([#14](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/issues/14))
+
+### Features
+
+* add support to oboukili/argocd &gt;= v5 ([#14](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/issues/14)) ([754e1e6](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/commit/754e1e6dd1fa780c07aef7b9af209680fdda60d9))
+
 ## [1.0.2](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v1.0.1...v1.0.2) (2023-05-30)
 
 
