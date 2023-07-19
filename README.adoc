@@ -1,6 +1,6 @@
 = devops-stack-module-efs-csi-driver
 // Document attributes to replace along the document
-:chart-version: 2.3.8
+:aws-efs-csi-driver-chart-version: 2.3.8
 :original-repo-url: https://github.com/kubernetes-sigs/aws-efs-csi-driver/tree/386eda75f4d32d134737b35db7e43a1bf3277416
 
 A https://devops-stack.io[DevOps Stack] module to deploy an Amazon EFS Container Storage Interface (CSI) driver.
@@ -10,7 +10,7 @@ The EFS CSI Driver chart used by this module is shipped in this repository as we
 [cols="1,1,1",options="autowidth,header"]
 |===
 |Current Chart Version |Original Repository |Default Values
-|*{chart-version}* |{original-repo-url}/charts/aws-efs-csi-driver[Chart] |{original-repo-url}/charts/aws-efs-csi-driver/values.yaml[`values.yaml`]
+|*{aws-efs-csi-driver-chart-version}* |{original-repo-url}/charts/aws-efs-csi-driver[Chart] |{original-repo-url}/charts/aws-efs-csi-driver/values.yaml[`values.yaml`]
 |===
 
 == Usage
