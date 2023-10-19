@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.3.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v2.2.0...v2.3.0) (2023-10-19)
+
+
+### Features
+
+* add standard variables and variable to add labels to Argo CD app ([4fb47a7](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/commit/4fb47a7f85bd2c2f7eb51a53c3a392f86c979fb6))
+* add variables to set AppProject and destination cluster ([7d70210](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/commit/7d7021045fc47a184c56f831680d8e0945d9bb0e))
+
 ## [2.2.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v2.1.0...v2.2.0) (2023-08-22)
 
 
