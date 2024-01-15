@@ -7,10 +7,7 @@ resource "argocd_project" "this" {
 
   metadata {
     name      = var.destination_cluster != "in-cluster" ? "efs-csi-driver-${var.destination_cluster}" : "efs-csi-driver"
-    namespace = var.argocd_namespace
-    annotations = {
-      "devops-stack.io/argocd_namespace" = var.argocd_namespace
-    }
+    namespace = "argocd"
   }
 
   spec {
@@ -97,7 +94,7 @@ module "iam_assumable_role_efs" {
 resource "argocd_application" "this" {
   metadata {
     name      = var.destination_cluster != "in-cluster" ? "efs-csi-driver-${var.destination_cluster}" : "efs-csi-driver"
-    namespace = var.argocd_namespace
+    namespace = "argocd"
     labels = merge({
       "application" = "efs-csi-driver"
       "cluster"     = var.destination_cluster
