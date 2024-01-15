@@ -67,12 +67,6 @@ variable "dependency_ids" {
 ## Module variables
 #######################
 
-variable "name" {
-  description = "Name used to override the chart name on deployment."
-  type        = string
-  default     = "efs-csi-driver"
-}
-
 variable "efs_file_system_id" {
   description = "EFS Filesystem ID to use by the CSI driver to create volumes."
   type        = string

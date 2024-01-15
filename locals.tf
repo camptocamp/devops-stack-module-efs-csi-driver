@@ -1,7 +1,6 @@
 locals {
   helm_values = [{
     "aws-efs-csi-driver" = {
-      nameOverride = var.name
       storageClasses = [{
         name = "efs"
         parameters = {
