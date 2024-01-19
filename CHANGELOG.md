@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.0.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v2.4.0...v3.0.0) (2024-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove the ArgoCD namespace variable
+* hardcode the release name to remove the destination cluster
+
+### Bug Fixes
+
+* hardcode the release name to remove the destination cluster ([c64e00b](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/commit/c64e00b05d45dd7796782f6983959e896aa82d41))
+* remove the ArgoCD namespace variable ([c897ac4](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/commit/c897ac4f3b386c412aabe1166f3c837b87002ea8))
+
 ## [2.4.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v2.3.0...v2.4.0) (2023-11-02)
 
 
