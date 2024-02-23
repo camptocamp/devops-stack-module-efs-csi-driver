@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v3.0.0...v3.1.0) (2024-02-23)
+
+
+### Features
+
+* **chart:** patch update of dependencies on efs-csi-driver chart ([#26](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/issues/26)) ([cf5d811](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/commit/cf5d8114b4e033bd38cf983bfd7b76a99d4b61e3))
+
 ## [3.0.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v2.4.0...v3.0.0) (2024-01-19)
 
 
