@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v3.1.0...v3.2.0) (2024-04-17)
+
+
+### Features
+
+* add variable to set resources with default values ([#31](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/issues/31)) ([74c4327](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/commit/74c4327e3bce42792b46007babcf37c317a63610))
+
 ## [3.1.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v3.0.0...v3.1.0) (2024-02-23)
 
 
