@@ -62,6 +62,40 @@ variable "dependency_ids" {
 ## Module variables
 #######################
 
+variable "resources" {
+  description = <<-EOT
+    Resource limits and requests for aws-efs-csi-driver's components. Follow the style on https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/[official documentation] to understand the format of the values."
+
+    NOTE: These are the same values as the defaults on the Helm chart aws-efs-csi-driver.
+  EOT
+  type = object({
+
+    controller = optional(object({
+      requests = optional(object({
+        cpu    = optional(string, "10m")
+        memory = optional(string, "40Mi")
+      }), {})
+      limits = optional(object({
+        cpu    = optional(string)
+        memory = optional(string, "256Mi")
+      }), {})
+    }), {})
+
+    node = optional(object({
+      requests = optional(object({
+        cpu    = optional(string, "10m")
+        memory = optional(string, "40Mi")
+      }), {})
+      limits = optional(object({
+        cpu    = optional(string)
+        memory = optional(string, "256Mi")
+      }), {})
+    }), {})
+
+  })
+  default = {}
+}
+
 variable "efs_file_system_id" {
   description = "EFS Filesystem ID to use by the CSI driver to create volumes."
   type        = string
