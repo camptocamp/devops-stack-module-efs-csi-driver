@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.1](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v3.2.0...v3.2.1) (2024-08-07)
+
+
+### Bug Fixes
+
+* change IAM role policy to allow dynamic volume provisioning ([#34](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/issues/34)) ([2d258fb](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/commit/2d258fb6a2f8cb1a35ec96003533aea7832e70d7))
+
 ## [3.2.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v3.1.0...v3.2.0) (2024-04-17)
 
 
