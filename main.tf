@@ -34,46 +34,8 @@ data "utils_deep_merge_yaml" "values" {
   input = [for i in concat(local.helm_values, var.helm_values) : yamlencode(i)]
 }
 
-resource "aws_iam_policy" "efs" {
-  name_prefix = "efs-csi-driver-"
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "elasticfilesystem:DescribeAccessPoints",
-          "elasticfilesystem:DescribeFileSystems",
-          "elasticfilesystem:DescribeMountTargets",
-          "ec2:DescribeAvailabilityZones"
-        ]
-        Resource = "*"
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "elasticfilesystem:CreateAccessPoint"
-        ]
-        Resource = "*"
-        Condition = {
-          StringLike = {
-            "aws:RequestTag/efs.csi.aws.com/cluster" = "true"
-          }
-        }
-      },
-      {
-        Effect   = "Allow"
-        Action   = "elasticfilesystem:DeleteAccessPoint"
-        Resource = "*"
-        Condition = {
-          StringEquals = {
-            "aws:ResourceTag/efs.csi.aws.com/cluster" = "true"
-          }
-        }
-      }
-    ]
-  })
+data "aws_iam_policy" "AmazonEFSCSIDriverPolicy" {
+  arn = "arn:aws:iam::aws:policy/service-role/AmazonEFSCSIDriverPolicy"
 }
 
 module "iam_assumable_role_efs" {
@@ -83,7 +45,7 @@ module "iam_assumable_role_efs" {
   number_of_role_policy_arns = 1
   role_name_prefix           = format("efs-csi-driver-%s-", var.cluster_name)
   provider_url               = replace(var.cluster_oidc_issuer_url, "https://", "")
-  role_policy_arns           = [resource.aws_iam_policy.efs.arn]
+  role_policy_arns           = [data.aws_iam_policy.AmazonEFSCSIDriverPolicy.arn]
 
   # List of ServiceAccounts that have permission to attach to this IAM role
   oidc_fully_qualified_subjects = [
