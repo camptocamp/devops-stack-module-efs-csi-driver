@@ -6,6 +6,7 @@
 ### ⚠ BREAKING CHANGES
 
 * **chart:** major update of dependencies on efs-csi-driver chart ([#32](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/issues/32))
+  * The major version bump is related to the replacement of `stunnel` by `efs-utils 2.0.0` on the underlying container image. Consequently, its version has been bumped to version 2.x.y and so the chart had a major bump also. Check the official changelog for the container image [here](https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/CHANGELOG-2.x.md#v200).
 
 ### Features
 
