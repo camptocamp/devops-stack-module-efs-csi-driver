@@ -1,5 +1,16 @@
 # Changelog
 
+## [5.0.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v4.0.0...v5.0.0) (2024-10-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* point the Argo CD provider to the new repository ([#37](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/issues/37))
+
+### Features
+
+* point the Argo CD provider to the new repository ([#37](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/issues/37)) ([3c3b79e](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/commit/3c3b79e2bb7ede5ffb7b118d14cc88b8966b767a))
+
 ## [4.0.0](https://github.com/camptocamp/devops-stack-module-efs-csi-driver/compare/v3.2.1...v4.0.0) (2024-08-20)
 
 
